@@ -1,0 +1,38 @@
+#:kivy 1.0
+#:import COMPANY_NAME config.COMPANY_NAME
+<DetailScreen>:
+    name: "detailtask" 
+
+    BoxLayout:
+        orientation:'vertical'
+
+        MDToolbar:
+            title: APP_NAME
+        MDTabs:
+            id: android_tabs
+
+            Tabs:
+                text: f"Task Detials"
+                GridLayout:
+                    cols: 1
+
+                    MDLabel:
+                        id: task
+                        text: "task"
+
+                    MDLabel:
+                        id: date_time
+
+                    GridLayout:
+                        rows: 2
+
+                        MDRaisedButton:
+                            text: "Delete"
+                            size_hint: .7,0.05
+                            on_release: root.delete_task()
+
+                        MDRaisedButton:
+                            text: "Back"
+                            size_hint: .7,0.05
+                            on_release: root.change_screen("home")
+

@@ -1,0 +1,48 @@
+#:kivy 1.0
+#:import COMPANY_NAME config.COMPANY_NAME
+<RegisterScreen>:
+    name: 'signup'
+    Image:
+        size_hint: (0.3,0.3)
+        pos_hint:{'center_x': 0.5, 'center_y': 0.85}
+        source: "logo.png"
+        
+    MDTextField:
+        id: username
+        hint_text: "Username"
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+        size_hint: .75,0.08
+    
+    MDTextField:
+        id: password
+        hint_text: "Password"
+        pos_hint: {"center_x":0.5, "center_y":0.57}
+        size_hint: .75,0.08
+    
+    MDTextField:
+        id: bestfriend
+        hint_text: "What is your best Friend Name?"  
+        helper_text: "For forgot Password?"  
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x":0.5, "center_y":0.49}
+        size_hint: .75,0.08
+    
+    MDRaisedButton:
+        text: "Sign up"
+        pos_hint: {"center_x": 0.5, "center_y":0.35}
+        size_hint: .7,0.05
+        on_release: root.add_user(root.ids.username.text, root.ids.password.text,  root.ids.bestfriend.text)
+    
+    MDTextButton:
+        text: f"[color=#000000]Have an account?[/color] Log in"
+        markup: True
+        pos_hint: {"center_x":0.5, "center_y":0.22}
+        on_release: root.change_screen("login")
+    
+    MDLabel:
+        text: f"[font=Icons] {md_icons['copyright']}[/font]  [font=Roboto]{COMPANY_NAME} 2020[/font]"
+        markup: True
+        halign: "center"
+        pos_hint: {"center_y":0.05}
+
+    

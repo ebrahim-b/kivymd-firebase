@@ -1,0 +1,78 @@
+#:kivy 1.0
+#:import APP_NAME config.APP_NAME
+#:import COMPANY_NAME config.COMPANY_NAME
+<Tabs>:
+
+
+<DialogContent>:
+    orientation: "vertical"
+    size_hint: 0.4, None
+
+    GridLayout:
+        rows: 1
+        
+
+        MDTextField:
+            id: task_text
+            hint_text: "Add Task..."
+            pos_hint: {"center_y": .4}
+            color_mode: 'accent'
+            max_text_length: 50
+
+        MDIconButton:
+            icon: 'calendar'
+            on_release: root.show_date_picker()
+            padding: '10dp'
+
+        MDIconButton:
+            icon: 'clock'
+            padding: '5dp'
+            on_release: root.show_time_picker()
+    
+    GridLayout:
+        rows: 1
+        MDLabel:
+            id: date_text
+
+        MDLabel:
+            id: time_text
+
+
+<MainScreen>:
+    name: 'home'
+
+    BoxLayout:
+        orientation:'vertical'
+
+        MDToolbar:
+            title: APP_NAME
+        MDTabs:
+            id: android_tabs
+            
+            Tabs:
+                text: f"Today"
+                FloatLayout:
+                    ScrollView:
+                        MDList:
+                            id: container
+
+                    MDFloatingActionButton:
+                        icon: "plus"
+                        opposite_colors: True    
+                        pos_hint: {"center_x":0.9, "center_y":0.1}
+                        #on_release: root.remove_widgets()
+                        on_release:root.show_task_dialog()
+                        #on_release: root.change_screen("addtask")
+                
+            Tabs:
+                text: "Upcomming"
+                FloatLayout:
+                    ScrollView:
+                        MDList:
+                            id: container_2
+                
+
+                
+
+
+    

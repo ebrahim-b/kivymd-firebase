@@ -1,0 +1,53 @@
+#:kivy 1.0
+#:import COMPANY_NAME config.COMPANY_NAME
+<ForgotScreen>:
+    name: 'forgot'
+    Image:
+        size_hint: (0.3,0.3)
+        pos_hint:{'center_x': 0.5, 'center_y': 0.85}
+        source: "logo.png"
+        
+    MDTextField:
+        id: username
+        hint_text: "Username"
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+        size_hint: .75,0.08
+    
+    MDTextField:
+        id: password
+        hint_text: "New Password"
+        pos_hint: {"center_x":0.5, "center_y":0.57}
+        size_hint: .75,0.08
+    
+    MDTextField:
+        id: bestfriend
+        hint_text: "What is your best Friend Name?" 
+        pos_hint: {"center_x":0.5, "center_y":0.49}
+        size_hint: .75,0.08
+
+    MDRaisedButton:
+        text: "Forgot Password"
+        pos_hint: {"center_x": 0.5, "center_y":0.4}
+        size_hint: .7,0.05
+        on_release: root.forgot_password(root.ids.username.text, root.ids.password.text,  root.ids.bestfriend.text)
+
+    MDTextButton:
+        text: f"[color=#000000]Don't have an account?[/color] Sign up"
+        markup: True
+        pos_hint: {"center_x":0.5, "center_y":0.32}
+        on_release: root.change_screen("signup")
+    
+    MDTextButton:
+        text: f"[b][color=#000000]Back To[/color] Login[/b]"
+        markup: True
+        pos_hint: {"center_x":0.5, "center_y":0.25}
+        on_release: root.change_screen("login")
+    
+    MDLabel:
+        text: f"[font=Icons] {md_icons['copyright']}[/font]  [font=Roboto]{COMPANY_NAME} 2020[/font]"
+        markup: True
+        halign: "center"
+        pos_hint: {"center_y":0.05}
+    
+
+    

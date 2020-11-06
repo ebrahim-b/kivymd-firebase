@@ -1,0 +1,52 @@
+#:kivy 1.0
+#:import COMPANY_NAME config.COMPANY_NAME
+<LoginScreen>:
+    name: "login"    
+    Image:
+        size_hint: (0.3,0.3)
+        pos_hint:{'center_x': 0.5, 'center_y': 0.85}
+        source: "logo.png"
+        
+    MDTextField:
+        id: username
+        hint_text: "Enter username"            
+        helper_text_mode: "on_focus"
+        icon_right: "email"
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+        size_hint: .75,0.085
+    
+    MDTextField:
+        id: password
+        hint_text: "Enter Password"  
+        helper_text: "or click on forgot Password?"  
+        helper_text_mode: "on_focus"
+        icon_right: "key-variant"
+        pos_hint: {"center_x":0.5, "center_y":0.57}
+        size_hint: .75,0.085
+        password: True
+    
+    MDRaisedButton:
+        text: "Login"
+        pos_hint: {"center_x": 0.5, "center_y":0.48}
+        size_hint: .7,0.05
+        on_release: root.login(root.ids.username.text, root.ids.password.text)
+        
+    
+    MDTextButton:
+        text: "Forgot password?"
+        pos_hint: {"center_x":0.5, "center_y":0.4}
+        on_release: root.change_screen("forgot")
+
+    MDTextButton:
+        text: f"[color=#000000]Don't have an account?[/color] Sign up"
+        markup: True
+        pos_hint: {"center_x":0.5, "center_y":0.33}
+        on_release: root.change_screen("signup")
+    
+    MDLabel:
+        text: f"[font=Icons] {md_icons['copyright']}[/font]  [font=Roboto]{COMPANY_NAME} 2020[/font]"
+        markup: True
+        halign: "center"
+        pos_hint: {"center_y":0.05}
+
+    
