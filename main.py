@@ -22,7 +22,7 @@ import json
 import requests
 
 
-url = 'https://work-list-e2d12.firebaseio.com/.json'
+url = '' #Insert Database Address like https://sample.com/.json
 auth_key = ''# insert Firebase Database secret in Project Setting > Service Account > Database Secret
 
 class Tabs(FloatLayout, MDTabsBase):
